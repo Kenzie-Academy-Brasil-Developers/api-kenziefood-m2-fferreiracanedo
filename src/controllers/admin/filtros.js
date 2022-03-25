@@ -1,6 +1,6 @@
 import { AdminAPI } from "./adminAPI.js"
 import { CardProduto } from "./cardProdutos.js"
-
+import { ButtoesPesquisa} from "./../home/buttoesPesquisa.js"
 
 export class AddEventListener{
     static arrayProdutosAtual = []
@@ -19,6 +19,7 @@ export class AddEventListener{
                 const botoesFiltro = document.querySelectorAll(".categoriasVitrine")
                 botoesFiltro.forEach((botao)=>{
                     botao.addEventListener("click", filtrarCategorias)
+                    botao.addEventListener("click", ButtoesPesquisa.efeitoFocusButtonCategorias.bind(ButtoesPesquisa))
                 })
             let arrayProdutos = []
             function filtrarCategorias(event){
@@ -33,13 +34,15 @@ export class AddEventListener{
             arrayProdutos = []
             }
             const btnTodos = document.querySelector("#btnTodos")
+            btnTodos.addEventListener("click", ButtoesPesquisa.efeitoFocusButtonTodos.bind(ButtoesPesquisa))
             btnTodos.addEventListener("click", (e)=>{
             const clique = e.target.id
             if(clique == 'btnTodos'){
                 CardProduto.templateCard(this.arrayProdutosAtual)
+                
             }
             })
-            
+           
         },500)
         
 }

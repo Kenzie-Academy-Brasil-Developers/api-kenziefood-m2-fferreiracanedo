@@ -191,7 +191,7 @@ header {
     max-width: 440px;
 }
 
-#cadastrarProdutoCategorias .categoriasVitrine, #btnTodos {
+#cadastrarProdutoCategorias .categoriasVitrine {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -250,7 +250,8 @@ header {
 }
 
 #btnTodos:hover{
-    color: #FF2253;
+    background-color: #FF2253;
+    color: white;
 }
 
 .categoriasVitrine:hover, .categoriaSelected, .categoriaProdutoSelected  {

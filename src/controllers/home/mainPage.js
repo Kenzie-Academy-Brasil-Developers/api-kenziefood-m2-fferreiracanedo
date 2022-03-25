@@ -80,8 +80,10 @@ if(verificacao == 'autenticado'){
         totalCarrinho.innerText = valorTotal.toFixed(2) 
         setTimeout(() => {
             const botoesFiltro = document.querySelectorAll(".categoriasVitrine")
+            
             botoesFiltro.forEach((botao)=>{
                 botao.addEventListener("click", filtrarCategorias)
+                botao.addEventListener("click", ButtoesPesquisa.efeitoFocusButtonCategorias.bind(ButtoesPesquisa)) 
             })
         }, 500)
     let arrayProdutos = []
@@ -103,6 +105,8 @@ setTimeout(() => {
         if(clique == 'btnTodos'){
             ApiPublica.template(arrayProdutosAutenticado)
         }
+    
+        btnTodos.addEventListener("click", ButtoesPesquisa.efeitoFocusButtonTodos.bind(ButtoesPesquisa))
     })
 }, 500)
 
@@ -157,13 +161,19 @@ if(verificacao == 'anonimo'){
     qtdCarrinho.innerText = Carrinho.arrayCarrinho.length
     //função que adiciona evento listen em todos os botoes da categoria
 //inicio
+   
 setTimeout(() => {
     const btnTodos = document.querySelector("#btnTodos")
     const inputCategorias = document.querySelectorAll(".categoriasVitrine")
+    //adiciona focus nos botoes
     for(let i = 1; i <  inputCategorias.length ; i++){
         inputCategorias[i].addEventListener("click", ButtoesPesquisa.filtrarCategorias.bind(ButtoesPesquisa))
+        inputCategorias[i].addEventListener("click", ButtoesPesquisa.efeitoFocusButtonCategorias.bind(ButtoesPesquisa))                   
+           
+                               
     }
     btnTodos.addEventListener("click", ButtoesPesquisa.filtrarTotal.bind(ButtoesPesquisa))
+    btnTodos.addEventListener("click", ButtoesPesquisa.efeitoFocusButtonTodos.bind(ButtoesPesquisa))
 }, 500);
 //fim
 }
